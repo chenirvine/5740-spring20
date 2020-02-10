@@ -7,5 +7,5 @@ int main(int argc, char **argv)
 
 	strcpy(p, "123");
 
-	printf("%s\n", p);
+	printf("%p: %s\n", p, p);
 }
