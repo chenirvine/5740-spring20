@@ -10,6 +10,8 @@ int main(int argc, char **argv)
 	free(p);
 	printf("The memory %p has been freed\n", p);
 
+	printf("%p, %s\n", p, p);
+
 	puts("Enter the second string:\n");
 	gets(p);
 
