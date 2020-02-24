@@ -1,0 +1,29 @@
+void
+uno_check(void)
+{
+	if (select("malloc", FCALL, NONE, 0))    // find all calls to malloc
+	if (select("", DEF, NONE, 0))            // select symbols defined in call
+	{	if (select(MATCH, DEF, NONE, 1)) // check if any were previously marked
+			error("value allocated not freed"); // if so, complain
+		else
+			mark(1);                 // else mark the symbol
+	}
+
+	if (select("free", FCALL, NONE, 0))      // find all calls to free
+	{	if (select("", USE, NONE, 0))    // select symbol used in call
+		{	if (select(MATCH, DEF, NONE, 1))  //check if previously marked
+				unmark();        // if so, remove the mark
+			else                     // else complain
+				error("freeing a symbol not previously malloced");
+		} else
+			error("no argument to free");
+	}
+
+	if (path_ends())                         // at any return or exit statement
+	if (select("", ANY, NONE, 1))            // check if any frees are pending
+	{	if (known_zero())                // if the value of the symbol is zero
+			no_error();              // no problem, malloc probably returned null
+		else                             // else the symbol should be freed
+			error("malloc without free");
+	}
+}

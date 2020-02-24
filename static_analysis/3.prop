@@ -1,0 +1,13 @@
+void uno_check(void) // def-after-def errors
+{
+//	if(select("", USE, NONE))
+//	if(match(1, ANY, NONE))
+//	unmark();
+	if(select("", DEF, NONE)) //DEF - to tag symbols whose value is changed
+	{ 
+		if (match(1, ANY, NONE)) // The special tag ANY matches any of the data-flow tags, and the special tag NONE matches none.
+			error("def after def");
+		else
+			mark(1);
+	}
+}

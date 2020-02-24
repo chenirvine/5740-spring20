@@ -1,0 +1,7 @@
+void uno_check(void)
+{
+        if (select("assert", FCALL, NONE, 0))
+        if (select("", DEF|FCALL, NONE, 0))
+        if (exclude("assert", ANY, NONE, 0))
+                error("side effect or fct call in assert");
+}
