@@ -1,34 +1,34 @@
 final class Mission
 {
-	private int mission-id; 
-	private static int mission-passcode=87654321;
-	private String mission-place;
+	private int missionid;
+	private static int missionpasscode=87654321;
+	private String missionplace;
 
-	public Mission(String ID)
+	public Mission(int ID)
 {
-	mission-id = ID;
+	missionid = ID;
 	Random rand = new Random();
-	mission-passcode = rand.nextInt(10000000);
+	missionpasscode = rand.nextInt(10000000);
 }
 
-public int get-mission-id()
+public int GetMissionId()
 {
-	return mission-id;
+	return missionid;
 }
 
-public void set-mission-id(int new-id)
+public void SetMissionId(int nid)
 {
-	mission-id = new-id;
+	missionid = nid;
 }
 
-public String get-mission-place()
+public String GetMissionPlace()
 {
-	return mission-place;
+	return missionplace;
 }
 
-public void set-mission-place(String new- mission-place)
+public void SetMissionPlace(String nmissionplace)
 {
-	mission-place = new-mission-place;
+	missionplace = nmissionplace;
 }
 
 }
